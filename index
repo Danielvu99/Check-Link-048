@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>打开链接按照组</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+      background-color: #f4f4f4;
+    }
+
+    h1 {
+      text-align: center;
+    }
+
+    #groupButtons {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    #groupButtons button {
+      margin: 5px;
+      padding: 10px 16px;
+      background-color: #007BFF;
+      color: white;
+      border: none;font-size:20pt;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    #groupButtons button:hover {
+      background-color: #0056b3;
+    }
+
+    .link-container {
+      margin: 10px;
+      border: 1px solid #ccc;
+      padding: 8px;
+      background-color: white;
+      border-radius: 4px;
+      box-shadow: 0 0 5px rgba(0,0,0,0.1);
+      display: inline-block;
+      width: 23%;
+      vertical-align: top;
+      box-sizing: border-box;
+    }
+
+    .link-url {
+      display: block;
+      margin-bottom: 5px;
+      font-size: 14px;
+      font-weight: bold;
+      color: #333;
+      word-wrap: break-word;
+    }
+
+    .link-iframe {
+      width: 100%;
+      height: 180px;
+      border: none;
+      border-radius: 4px;
+    }
+
+    #linkDisplay {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    @media (max-width: 768px) {
+      .link-container {
+        width: 48%;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .link-container {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Mở Link Theo Nhóm Tự Động</h1>
+
+  <div id="groupButtons"></div>
+  <div id="linkDisplay"></div>
+
+  <script>
+    // ==== DANH SÁCH LINK MẪU ====
+    const linkGroups = {
+    "六合日报": [
+	"https://16815.com",
+	"https://16815a.com",
+	"https://16815b.com",
+	"https://16815c.com",
+	"https://16815d.com",
+	"https://iiiiiiiiiiiii.16815.com",
+	"https://iiiiiiiiiiiii.16815a.com",
+	"https://iiiiiiiiiiiii.16815b.com",
+	"https://iiiiiiiiiiiii.16815c.com",
+	"https://iiiiiiiiiiiii.16815d.com",
+	"https://314123.com",
+	"https://www.626345.com",
+	"https://626345.com",
+	"https://626345.cc",
+	"https://www.626345.cc",
+	"https://iiiiiiiiiiiii.626345.com",
+	"https://iiiiiiiiiiiii.314123.com",
+	"https://iiiiiiiiiiiii.491031.cyou",
+	"https://iiiiiiiiiiiii.49555.cyou",
+	"https://iiiiiiiiiiiiii.490751.cyou",
+	"https://iiiiiiiiiiiiii.490752.cyou",
+	"https://iiiiiiiiiiiii.490403.cyou",
+	"https://iiiiiiiiiiiii.490083.cyou",
+	"https://iiiiiiiiiiiii.490084.cyou",
+	"https://iiiiiiiiiiiii.490201.cyou",
+	"https://iiiiiiiiiiiii.490202.cyou",
+	"https://iiiiiiiiiiiii.49118.link",
+	"https://iiiiiiiiiiiii.49558.cyou",
+	"https://iiiiiiiiiiiii.49559.cyou",
+	"https://iiiiiiiiiiiii.49247.cyou",
+	"https://iiiiiiiiiiiii.49041.cyou",
+	"https://iiiiiiiiiiiii.490018.cyou",
+	"https://iiiiiiiiiiiii.49837.top",
+	"https://iiiiiiiiiiiii.49563.top",
+	"https://iiiiiiiiiiiii.49375.top",
+	"https://iiiiiiiiiiiii.49006.top",
+	"https://iiiiiiiiiiiii.49658.xyz",
+	"https://iiiiiiiiiiiii.49074.link",
+	"https://iiiiiiiiiiiii.icmcy.com",
+	"https://iiiiiiiiiiiii.asrji.com",
+	"https://iiiiiiiiiiiii.iknqv.com",
+	"https://iiiiiiiiiiiii.ujdde.com",
+	"https://iiiiiiiiiiiii.oggnk.com",
+	"https://iiiiiiiiiiiii.abpqp.com",
+	"https://iiiiiiiiiiiii.zeosl.com",
+	"https://iiiiiiiiiiiii.eiqop.com",
+	"https://iiiiiiiiiiiii.49748.cyou",
+	"https://iiiiiiiiiiiii.49943.cyou",
+	"https://lhjt.49658.xyz",
+	"https://h5.49843.xyz",
+	"https://h5.49658.xyz",
+	"https://h5.49643.xyz",
+	"https://1zu.49027.xyz",
+	"https://www.299955.com",
+	"https://www.299933.com",
+	"https://www.299911.com",
+	"https://www.233377.com",
+	"https://www.211177.com",
+	"https://299955.com",
+	"https://299933.com",
+	"https://299911.com",
+	"https://233377.com",
+	"https://211177.com",
+	"https://h5.492160.com",
+	"https://www.492160.com",
+	"https://492160.com",
+	"https://498473.com",
+	"https://www.723345.com",
+	"https://723345.com",
+	"https://www.723345.cc",
+	"https://723345.cc",
+	"https://091115.com",
+	"https://www.408511.cc",
+	"https://www.49757.cc",
+	"https://408511.cc",
+	"https://49757.cc",
+	"https://www.211166.com",
+	"https://www.499036.com",
+	"https://499036.com",
+	"https://www.49579.cc",
+	"https://www.886432.com",
+	"https://211166.com",
+	"https://www.408511.com",
+	"https://h5.499036.com",
+	"https://886432.com",
+	"https://9446666.com",
+	"https://www.886256.com",
+	"https://www.49767.cc",
+	"https://886256.com",
+	"https://h5.886432.com",
+	"https://49579.cc",
+	"https://www.9445555.com",
+	"https://49767.cc",
+	"https://h5.498473.com",
+	"https://9445555.com",
+	"https://www.9446666.com",
+	"https://408511.com",
+	"https://www.277764.com",
+	"https://www.498473.com",
+	"https://277764.com",
+	"https://www.36648.vip",
+	"https://www.091115.com",
+	"https://36648.vip",
+	"https://stw.xn--l1bc8b4dca3ic9cza7isa.xn--h2brj9c"],
+	
+    "49 Pro": [
+	"https://iiiiiiiiiiiiii.49.pro",
+	"https://490909.com",
+	"https://www.836234.com",
+	"https://836234.com",
+	"https://836234.cc",
+	"https://www.836234.cc",
+	"https://iiiiiiiiiiiiii.836234.com",
+	"https://iiiiiiiiiiiiii.490909.com",
+	"https://iiiiiiiiiiiiii.491033.cyou",
+	"https://iiiiiiiiiiiiii.490863.cyou",
+	"https://iiiiiiiiiiiiii.490864.cyou",
+	"https://iiiiiiiiiiiiii.49607.cyou",
+	"https://iiiiiiiiiiiiii.490507.cyou",
+	"https://iiiiiiiiiiiiii.49249.link",
+	"https://iiiiiiiiiiiiii.wbkojg.com",
+	"https://iiiiiiiiiiiiii.pwgbph.com",
+	"https://iiiiiiiiiiiiii.zp0752.com",
+	"https://iiiiiiiiiiiiii.gydxy.com",
+	"https://iiiiiiiiiiiiii.refugees-zhaohe.com",
+	"https://iiiiiiiiiiiiii.cnlongchang.com",
+	"https://iiiiiiiiiiiiii.jplviu.com",
+	"https://iiiiiiiiiiiiii.yininc.com",
+	"https://iiiiiiiiiiiiii.lwb6.com",
+	"https://iiiiiiiiiiiiii.jplpzy.com",
+	"https://iiiiiiiiiiiiii.waqczz.com",
+	"https://iiiiiiiiiiiiii.hnbzx.com",
+	"https://iiiiiiiiiiiiii.49998.cyou",
+	"https://iiiiiiiiiiiiii.encomusic.com",
+	"https://iiiiiiiiiiiiii.xingkongzf.com",
+	"https://iiiiiiiiiiiiii.49606.cyou",
+	"https://iiiiiiiiiiiiii.490386.cyou",
+	"https://iiiiiiiiiiiiii.49302.cyou",
+	"https://iiiiiiiiiiiiii.49235.cyou",
+	"https://iiiiiiiiiiiiii.49094.cyou",
+	"https://iiiiiiiiiiiiii.49689.top",
+	"https://iiiiiiiiiiiiii.49432.top",
+	"https://iiiiiiiiiiiiii.49505.top",
+	"https://iiiiiiiiiiiiii.49284.top",
+	"https://iiiiiiiiiiiiii.49068.top",
+	"https://iiiiiiiiiiiiii.8249.men",
+	"https://iiiiiiiiiiiiii.ayhsft.com",
+	"https://iiiiiiiiiiiiii.pwbxg.com",
+	"https://iiiiiiiiiiiiii.hsl123.com",
+	"https://iiiiiiiiiiiiii.bossfeng.com",
+	"https://iiiiiiiiiiiiii.49805.cyou",
+	"https://iiiiiiiiiiiiii.49914.cyou",
+	"https://iiiiiiiiiiiiii.490301.cyou",
+	"https://iiiiiiiiiiiiii.490302.cyou",	
+	"https://iiiiiiiiiiiiii.490115.cyou",
+	"https://lhlt.4929.men",
+	"https://85118.4929.men",
+	"https://dcxj4.49814.xyz",
+	"https://dcxj3.49814.xyz",
+	"https://dcxj2.49814.xyz",
+	"https://dcxj1.49814.xyz",
+	"https://4zu.49015.xyz",
+	"https://www.49826.cc",
+	"https://49826.cc",
+	"https://www.167511.cc",
+	"https://167511.cc",
+	"https://www.255649.com",
+	"https://255649.com",
+	"https://www.638949.com",
+	"https://638949.com",
+	"https://www.1777444.com",
+	"https://1777444.com",
+	"https://www.664394.com",
+	"https://664394.com",
+	"https://www.49835.cc",
+	"https://49835.cc",
+	"https://www.167511.com",
+	"https://167511.com",
+	"https://www.638249.com",
+	"https://638249.com",
+	"https://www.1777555.com",
+	"https://1777555.com",
+	"https://www.2111177.com",
+	"https://2111177.com",
+	"https://www.789972.com",
+	"https://789972.com",
+	"https://www.886720.com",
+	"https://886720.com",
+	"https://678443.com",
+	"https://www.678443.com",
+	"https://h5.678443.com",
+	"https://www.1777111.com",
+	"https://1777111.com",
+	"https://www.6281111.com",
+	"https://6281111.com",
+	"https://www.6284444.com",
+	"https://6284444.com",
+	"https://h5.499735.com",
+	"https://www.499735.com",
+	"https://499735.com",
+	"https://www.6292222.com",
+	"https://6292222.com",
+	"https://294228.com",
+	"https://www.294228.com",
+	"https://h5.294228.com",
+	"https://www.206345.com",
+	"https://206345.com",
+	"https://dcxj.xn--m1be5a8c4bjxv0d7etf.xn--h2brj9c"],  
+
+
+};
+
+    const pageSize = 20;
+    const groupState = {}; // { "Nhóm 1": currentIndex, ... }
+    const linkDisplay = document.getElementById("linkDisplay");
+
+    // Khởi tạo nút nhóm
+    const groupButtonsContainer = document.getElementById("groupButtons");
+    for (const groupName in linkGroups) {
+      groupState[groupName] = 0; // bắt đầu từ 0
+      const btn = document.createElement('button');
+      btn.textContent = groupName;
+      btn.onclick = () => handleGroupClick(groupName);
+      groupButtonsContainer.appendChild(btn);
+    }
+
+    function handleGroupClick(groupName) {
+      const links = linkGroups[groupName];
+      const start = groupState[groupName];
+      const end = start + pageSize;
+
+      // Nếu hết link thì dừng lại
+      if (start >= links.length) {
+        alert("Đã hết link của " + groupName);
+        return;
+      }
+
+      // Xoá iframe cũ
+      linkDisplay.innerHTML = '';
+
+      const batch = links.slice(start, end);
+      batch.forEach(link => {
+        const container = document.createElement('div');
+        container.className = 'link-container';
+
+        const a = document.createElement('a');
+        a.href = link;
+        a.target = "_blank";
+        a.className = "link-url";
+        a.textContent = link;
+
+        const iframe = document.createElement('iframe');
+        iframe.src = link;
+        iframe.className = 'link-iframe';
+        iframe.sandbox = "allow-scripts allow-same-origin";
+
+        container.appendChild(a);
+        container.appendChild(iframe);
+        linkDisplay.appendChild(container);
+      });
+
+      // Tăng chỉ số cho lần bấm tiếp theo
+      groupState[groupName] += pageSize;
+    }
+  </script>
+
+</body>
+</html>
